@@ -1,0 +1,53 @@
+1.
+# Beispiel: Route from SF to LA
+initialState = [
+  [Paolo Alto, [ [s1, [alle verbindungen]], [s2, [...] ], [s3, [...] ] ] ],
+  [Mountain View, [...]]
+]
+# Ich gestehe: Dieses "Pattern" habe ich mir gerade völlig random überlegt!!
+
+2.
+# Nimmt vom obersten Knoten umliegende Knoten.
+# Frontier ist unser STACK!!
+
+initialize frontier with initialState
+# frontier would be: [Paolo Alto, Mountain View ]
+
+3.
+state = frontier.remove()
+# "Paolo Alto" wird rausgenommen aus frontier.
+# state is "Paolo Alto"
+state = "Paolo Alto"
+
+4.
+goalTest(state)
+# "LA" == "PaoloAlto"
+
+5.
+state.neighbours()
+# state ist an sich: Paolo Alto
+# state.neighbours() is initialState[0][1]
+# state.neighbours() is [ [s1, [alle verbindungen]], [s2, [...] ], [s3, [...] ] ]
+
+6. 
+for neighbor in [ [s1, [alle verbindungen]], [s2, [...] ], [s3, [...] ] ]
+# Liste hat im Bsp. 3 Elemente. Also wird "For Schleife" 3-mal durchlaufen.
+# for läuft mehrmals durch. jedesmal wird "frontier.add()" ausgeführt.
+# beispiel 1. Durchlauf:
+# neighbor im 1. Durchlauf ist: s1
+frontier.add(s1)
+
+# neu: frontier ist jetzt: [Mountain View, s1, s2, s3]
+
+7.
+# Wir testen erneut:
+not frontier.isEmpty()
+
+8. 
+# Wie bei 3.
+
+9. 
+# Wenn frontier.isEmpty() irgendwann mal true ist. Und der goalTest nie erfolgreich war...
+return Failure
+# Wenn der goalTest erfolgreich war:
+return Success(state)
